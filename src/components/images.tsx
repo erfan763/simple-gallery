@@ -12,7 +12,7 @@ import AddIcon from "@mui/icons-material/Add";
 import DeleteIcon from "@mui/icons-material/Delete";
 import ZoomInIcon from "@mui/icons-material/ZoomIn";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 
 const Input = styled("input")({
@@ -76,6 +76,8 @@ export default function Images({
     height: "20vh",
   });
 
+  console.log(myImage, "rfiefiegieus");
+
   const handleClose = () => {
     setOpen(false);
     setImageZoom(undefined);
@@ -84,6 +86,14 @@ export default function Images({
     setOpen(true);
     setImageZoom(i);
   };
+  useEffect(() => {
+    if (fileUrl) {
+      setMyImage([...myImage, { src: fileUrl.avatar }]);
+      setFileUrl(undefined);
+    }
+  }, [fileUrl]);
+
+  useEffect(() => {}, []);
 
   return (
     <>
@@ -147,11 +157,7 @@ export default function Images({
       </Box>
 
       <Box display="grid" gridTemplateColumns={coloumnsFr?.fr} gap={1}>
-        {myImage?.map((v: any, index: any) => {
-          if (fileUrl) {
-            setMyImage([...myImage, { src: fileUrl.avatar }]);
-            setFileUrl(undefined);
-          }
+        {myImage?.map((v: any, index: number) => {
           return (
             <Box
               key={index}
@@ -186,7 +192,7 @@ export default function Images({
                 display="flex"
                 justifyContent="center"
                 alignItems="center"
-                width="100%"
+                width="80%"
                 height="100%"
                 position="absolute"
               >

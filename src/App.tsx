@@ -3,7 +3,7 @@ import { Box, Divider } from "@mui/material";
 
 import "react-toastify/dist/ReactToastify.min.css";
 import { ToastContainer } from "react-toastify";
-import CustomeDrawer from "./components/CustomeDrawer";
+// import CustomeDrawer from "./components/CustomeDrawer";
 import { useState } from "react";
 
 import image1 from "./assets/1.jpeg";
@@ -28,6 +28,10 @@ import image18 from "./assets/18.jpeg";
 function App() {
   const [isDark, setIsDark] = useState<boolean>(false);
 
+  console.log(isDark);
+
+  // setIsDark(true);
+
   const [myImage, setMyImage] = useState<any[]>([
     { src: image1 },
     { src: image2 },
@@ -49,8 +53,11 @@ function App() {
     { src: image18 },
   ]);
 
+  // setMyImage(myImage?.filter((a, idx) => (a.src !== v.src ));)
+
   return (
     <>
+      {/* <div onClick={() => setIsDark(true)}></div> */}
       <ToastContainer style={{ width: "auto" }} position="top-right" />
       <Box>
         <Box
@@ -64,7 +71,7 @@ function App() {
         >
           {/* <Switch defaultChecked /> */}
           <Box dir="rtl" display="flex" height="64px" px={6} pt={2}>
-            <CustomeDrawer isDark={isDark} setIsDark={setIsDark} />
+            {/* <CustomeDrawer isDark={isDark} setIsDark={setIsDark} /> */}
           </Box>
           <Divider />
 
